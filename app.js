@@ -4,9 +4,20 @@ const viewOptions = [
     "View Departments",
     "View Roles",
     "View Employees",
-    "Add Employee",
+    "Update Employee",
     "exit"
-]
+];
+
+const employeeOptions = [
+    "John Stamos",
+    "Mary Walters",
+    "George Washington",
+    "Meghan Kelly",
+    "Tom Hanks",
+    "Dolly Parton",
+    "Oprah Winfrey"
+    // "exit"
+];
 
 runSearch();
 
@@ -33,7 +44,7 @@ function runSearch() {
                     break;
 
                 case viewOptions[3]:
-                    addEmployee();
+                    updateEmployee();
                     break;
 
                 case viewOptions[4]:
@@ -75,6 +86,24 @@ function roleView() {
     })
 }
 
+
+const updateEmployee = () => {
+    function runUpdateSearch() {
+        inquirer
+            .prompt({
+                name: "action",
+                type: "list",
+                message: "Which umployee do you want to update?",
+                choices: employeeOptions
+            })
+          
+        }
+          runUpdateSearch();
+}
+            // .then(function (answer) {
+            //     switch (answer.action) {
+        
+           
 
 // const addEmployee = () => {
 //     const query = connection.query(
