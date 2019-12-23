@@ -15,8 +15,15 @@ const employeeOptions = [
     "Meghan Kelly",
     "Tom Hanks",
     "Dolly Parton",
-    "Oprah Winfrey"
-    // "exit"
+    "Oprah Winfrey",
+    "exit"
+];
+
+const updateOptions = [
+    "First Name",
+    "Last Name",
+    "Role",
+    "exit"
 ];
 
 runSearch();
@@ -45,9 +52,8 @@ function runSearch() {
 
                 case viewOptions[3]:
                     updateEmployee();
-                    break;
 
-                case viewOptions[4]:
+                case updateOptions[4]:
                     connection.end();
                     break
             }
@@ -65,6 +71,7 @@ function departmentView() {
         runSearch();
     })
 }
+
 function employeeView() {
     var sqlStr = "SELECT first_name, last_name, title, salary FROM employee ";
     sqlStr += "LEFT JOIN role ";
@@ -76,6 +83,7 @@ function employeeView() {
         runSearch();
     })
 }
+
 function roleView() {
     var sqlStr = "SELECT * FROM role";
     connection.query(sqlStr, function (err, result) {
@@ -88,92 +96,16 @@ function roleView() {
 
 
 const updateEmployee = () => {
+
     function runUpdateSearch() {
         inquirer
             .prompt({
                 name: "action",
                 type: "list",
-                message: "Which umployee do you want to update?",
+                message: "Which employee do you want to update?",
                 choices: employeeOptions
             })
-          
-        }
-          runUpdateSearch();
+           
+    }
+    runUpdateSearch();  
 }
-            // .then(function (answer) {
-            //     switch (answer.action) {
-        
-           
-
-// const addEmployee = () => {
-//     const query = connection.query(
-//         "INSERT INTO employee SET ?",
-//         {
-//             flavor: "rocky road",
-//             price: 3.99,
-//             quantity: 135
-//         },
-// //put this stuff into our products table
-// //then write call back function to tell us if there's error
-//         (err, res) => {
-//             if (err) {
-//                 throw err;
-//             }
-           
-//             console.table(res);
-//         }
-//     );
-//     console.log(query.sql)
-//     //tells what query it's running and sending to the sql server
-// }
-
-// connection.connect((err) => {
-//     if (err) {
-//         throw err;
-//     }
-//     //everything we do has to be in the connection.connect()
-//      // addFlavor()
-//      addFlavor();
-     
-// });
-
-
-// const updateFlavor = () => {
-//     connection.query(
-//         "UPDATE products SET ? WHERE ?",
-//         [
-//             //correspond to first question mark
-//             {
-//                 quantity: 50
-//             },
-//             //correspond to second
-//             {
-//                 flavor: "vanilla"
-//             }
-//         ],
-//         (err, res)=> {
-//             if (err) {
-//                 throw err;
-//             }
-//             //updateFlavor();
-//             updateFlavor();
-
-//             console.log(res);
-//             connection.end();
-//         }
-        
-//     );
-// }
-// const deleteFlavor = (id) => {
-//     connection.query(
-//         "DELETE FROM products WHERE id = ?",
-//         [
-//             id
-//         ],
-//         (err, res)=> {
-//             if (err) {
-//                 throw err;
-//             }
-//         }
-//     )
-// }
